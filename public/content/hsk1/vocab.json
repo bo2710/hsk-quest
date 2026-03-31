@@ -1,0 +1,8 @@
+[
+  { "id": "hsk1_v1", "type": "vocab", "level": 1, "hanzi": "爱", "pinyin": "ài", "meaning_vi": "yêu", "pos": "verb" },
+  { "id": "hsk1_v2", "type": "vocab", "level": 1, "hanzi": "八", "pinyin": "bā", "meaning_vi": "số tám", "pos": "noun" },
+  { "id": "hsk1_v3", "type": "vocab", "level": 1, "hanzi": "爸爸", "pinyin": "bàba", "meaning_vi": "bố", "pos": "noun" },
+  { "id": "hsk1_v4", "type": "vocab", "level": 1, "hanzi": "杯子", "pinyin": "bēizi", "meaning_vi": "cái cốc", "pos": "noun" },
+  { "id": "hsk1_v5", "type": "vocab", "level": 1, "hanzi": "北京", "pinyin": "Běijīng", "meaning_vi": "Bắc Kinh", "pos": "noun" },
+  { "id": "hsk1_v6", "type": "vocab", "level": 1, "hanzi": "本", "pinyin": "běn", "meaning_vi": "quyển (vở)", "pos": "noun" }
+]
