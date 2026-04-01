@@ -1,24 +1,18 @@
 import { create } from 'zustand';
-import { profileService } from '../db/profileService';
+import { devtools } from 'zustand/middleware';
+import { createUserSlice, type UserSlice } from './slices/userSlice';
+import { createSessionSlice, type SessionSlice } from './slices/sessionSlice';
 
-interface AppState {
-  isDarkMode: boolean;
-  toggleDarkMode: () => void;
-  hasProfile: boolean | null; // null: đang check, true: đã có, false: chưa có
-  checkProfile: () => Promise<void>;
-}
+// Hợp nhất các Type
+type StoreState = UserSlice & SessionSlice;
 
-export const useAppStore = create<AppState>((set) => ({
-  isDarkMode: false,
-  hasProfile: null,
-  toggleDarkMode: () => set((state) => {
-    const newMode = !state.isDarkMode;
-    if (newMode) document.documentElement.classList.add('dark');
-    else document.documentElement.classList.remove('dark');
-    return { isDarkMode: newMode };
-  }),
-  checkProfile: async () => {
-    const profile = await profileService.getProfile();
-    set({ hasProfile: !!profile });
-  }
-}));
+// Khởi tạo Store tổng
+export const useAppStore = create<StoreState>()(
+  devtools(
+    (...a) => ({
+      ...createUserSlice(...a),
+      ...createSessionSlice(...a),
+    }),
+    { name: 'HSK-Quest-Store' } // Tên hiển thị trên Redux DevTools
+  )
+);

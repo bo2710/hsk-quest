@@ -1,32 +1,36 @@
-// đường dẫn: src/app/router/index.tsx
-
 import { createBrowserRouter } from 'react-router-dom';
+import { MainLayout } from '../layouts/MainLayout';
+import { HomeScreen } from '../../features/home';
+import { PracticeHubScreen } from '../../features/practice-hub';
+import { ProfileScreen } from '../../features/profile';
+import { OnboardingScreen } from '../../features/onboarding';
+import { ExercisePlayerScreen } from '../../features/exercise-player';
 
 export const router = createBrowserRouter([
   {
+    path: '/onboarding',
+    element: <OnboardingScreen />
+  },
+  {
     path: '/',
-    element: <div>Layout chính có Bottom Navigation (Đang xây)</div>,
+    element: <MainLayout />, // Dùng cái Layout xịn ở trên
     children: [
       {
-        index: true,
-        element: <div>Màn hình Cây Lộ Trình (Path)</div>, 
+        index: true, // Trang chủ là HomeScreen (chứa Path)
+        element: <HomeScreen />
       },
       {
         path: 'practice',
-        element: <div>Màn hình Practice Hub</div>,
+        element: <PracticeHubScreen />
       },
       {
         path: 'profile',
-        element: <div>Màn hình Hồ sơ</div>,
+        element: <ProfileScreen />
       }
     ]
   },
   {
-    path: '/lesson/:sessionId',
-    element: <div>Màn hình Session Player (Full màn hình)</div>,
-  },
-  {
-    path: '/login',
-    element: <div>Màn hình Chọn Profile / Login</div>,
+    path: '/session/:lessonId',
+    element: <ExercisePlayerScreen />
   }
 ]);
